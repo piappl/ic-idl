@@ -107,6 +107,7 @@ fn lang_to_test_file(lang: &str) -> Option<&'static str> {
         "rust" | "rs" => Some("tests/test_rust.py"),
         "c" => Some("tests/test_c.py"),
         "cpp" | "c++" => Some("tests/test_cpp.py"),
+        "pydantic" | "pd" => Some("tests/test_pydantic.py"),
         _ => None,
     }
 }
@@ -132,7 +133,7 @@ pub fn run(opts: Options) {
                 eprintln!("error: unknown or unsupported language '{lang}'");
                 eprintln!(
                     "supported languages: c, cpp, csharp, java, protobuf, python, rust, \
-                     typescript, json, json-schema, xml, idl, all"
+                     typescript, json, json-schema, xml, idl, pydantic, all"
                 );
                 std::process::exit(1);
             }

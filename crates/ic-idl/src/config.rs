@@ -254,6 +254,9 @@ pub struct Options {
     #[option(section = "python options")]
     pub python: ic_codegen_python::PythonOptions,
 
+    #[option(section = "pydantic options")]
+    pub pydantic: ic_codegen_pydantic::PydanticOptions,
+
     #[option(section = "idl options")]
     pub idl: ic_codegen_idl::IdlOptions,
 
@@ -307,6 +310,10 @@ pub struct CodegenOptions {
     /// Generate Protobuf files in <dir>
     #[option(long, arg = "dir")]
     pub proto_out: Option<PathBuf>,
+
+    /// Generate Pydantic files in <dir>
+    #[option(long, arg = "dir")]
+    pub pydantic_out: Option<PathBuf>,
 
     /// Generate Python files in <dir>
     #[option(long, arg = "dir")]

@@ -33,7 +33,7 @@ use std::process::Command;
 /// Run integration tests
 #[derive(ic_cli::Command, Default)]
 pub struct Options {
-    /// Languages to test: c, python, typescript, csharp, cpp, java, rust
+    /// Languages to test: c, python, typescript, csharp, cpp, java, rust, pydantic
     #[option(short, long, arg = "lang")]
     pub lang: HashSet<String>,
 
@@ -125,6 +125,13 @@ fn run_python_tests(integration_dir: &Path, build_dir: &Path, idl_compiler: &Pat
     run_command(cmd, "uv");
 }
 
+fn run_pydantic_tests(integration_dir: &Path) {
+    let mut cmd = Command::new("uv");
+    cmd.current_dir(integration_dir.join("pydantic"))
+        .args(["run", "pytest", "-n", "auto"]);
+    run_command(cmd, "uv");
+}
+
 fn run_java_tests(integration_dir: &Path, build_dir: &Path, idl_compiler: &Path) {
     let mut cmd = Command::new("mvn");
     cmd.current_dir(integration_dir.join("java"))
@@ -169,6 +176,7 @@ pub fn run(opts: &Options) {
         "java",
         "rust",
         "json_schema",
+        "pydantic",
     ];
     let languages: HashSet<_> = if opts.lang.is_empty() || opts.lang.contains("all") {
         all_languages.iter().map(ToString::to_string).collect()
@@ -191,13 +199,15 @@ pub fn run(opts: &Options) {
                 &build_dir.join("cpp"),
                 &idl_compiler,
             ),
+            "pydantic" => run_pydantic_tests(&integration_dir),
             "java" => run_java_tests(&integration_dir, &build_dir, &idl_compiler),
             "json_schema" => run_json_schema_tests(&integration_dir, &build_dir, &idl_compiler),
             "rust" | "rs" => run_rust_tests(&integration_dir, &build_dir, &idl_compiler),
             _ => {
                 eprintln!("error: unknown or unsupported language '{lang}'");
                 eprintln!(
-                    "supported languages: c, python, typescript, csharp, cpp, java, rust, all"
+                    "supported languages: c, python, typescript, csharp, cpp, java, rust, \
+                     pydantic, all"
                 );
                 std::process::exit(1);
             }

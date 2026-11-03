@@ -442,6 +442,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "ic-codegen-pydantic"
+version = "0.6.0"
+dependencies = [
+ "ic-cli",
+ "ic-emit",
+ "ic-hir",
+ "ic-hir-analysis",
+ "ic-vfs",
+]
+
+[[package]]
 name = "ic-codegen-python"
 version = "0.6.0"
 dependencies = [
@@ -608,6 +619,7 @@ dependencies = [
  "ic-codegen-json",
  "ic-codegen-json-schema",
  "ic-codegen-protobuf",
+ "ic-codegen-pydantic",
  "ic-codegen-python",
  "ic-codegen-rust",
  "ic-codegen-typescript",

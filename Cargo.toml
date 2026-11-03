@@ -38,6 +38,7 @@ members = [
     "crates/ic-codegen-java",
     "crates/ic-codegen-json",
     "crates/ic-codegen-json-schema",
+    "crates/ic-codegen-pydantic",
     "crates/ic-codegen-protobuf",
     "crates/ic-codegen-python",
     "crates/ic-codegen-rust",
