@@ -66,6 +66,7 @@ ic-codegen-idl = { path = "../ic-codegen-idl" }
 ic-codegen-java = { path = "../ic-codegen-java" }
 ic-codegen-json = { path = "../ic-codegen-json" }
 ic-codegen-json-schema = { path = "../ic-codegen-json-schema" }
+ic-codegen-pydantic = { path = "../ic-codegen-pydantic" }
 ic-codegen-protobuf = { path = "../ic-codegen-protobuf" }
 ic-codegen-python = { path = "../ic-codegen-python" }
 ic-codegen-rust = { path = "../ic-codegen-rust" }

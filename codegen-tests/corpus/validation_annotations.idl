@@ -56,6 +56,9 @@ module validation_annotations {
         @ext::pattern_ecma262("^[0-9a-fA-F]+$")
         string checksum;
 
+        @min(0)
+        unsigned short level;
+
         Identifier symbol;
         Name label;
     };

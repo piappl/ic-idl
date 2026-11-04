@@ -322,6 +322,7 @@ fn generate_code(
         };
         xml_out, "xml" => ic_codegen_xml::codegen_xml(hir, vfs);
         proto_out, "proto" => ic_codegen_protobuf::codegen_proto(hir, options.proto.clone());
+        pydantic_out, "pydantic" => ic_codegen_pydantic::codegen_pydantic(hir, vfs, &options.pydantic);
         typescript_out, "typescript"  => {
             ic_codegen_typescript::codegen_typescript(hir, options.typescript.clone())
         };
